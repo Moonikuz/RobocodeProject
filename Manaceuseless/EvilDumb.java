@@ -7,7 +7,7 @@ import robocode.*;
 /**
  * EvilDumb - a robot by (your name here)
  */
-public class EvilDumb extends Robot
+public class EvilDumb extends AdvancedRobot
 {
 	/**
 	 * run: EvilDumb's default behavior
@@ -23,10 +23,22 @@ public class EvilDumb extends Robot
 		// Robot main loop
 		while(true) {
 			// Replace the next 4 lines with any behavior you would like
-			ahead(80);
-			turnGunRight(360);
-			back(100);
-			turnGunRight(360);
+			getX();
+            getY();
+			getHeading();
+            getGunHeading();
+            getRadarHeading();
+			getBattleFieldWidth();
+            getBattleFieldHeight();
+			setAhead(80);
+			setTurnGunRight(110);
+			execute();
+		    setAhead(60);
+			setTurnGunRight(80);
+			execute();
+			setBack(100);
+			setTurnGunRight(90);
+			execute();	
 		}
 	}
 
@@ -36,6 +48,7 @@ public class EvilDumb extends Robot
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
 		fire(1);
+		ahead(50);
 	}
 
 	/**
@@ -43,7 +56,10 @@ public class EvilDumb extends Robot
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		// Replace the next line with any behavior you would like
-		back(10);
+		setBack(20);
+		setTurnGunLeft(180);
+		turnGunRight(180);
+		execute();
 	}
 	
 	/**
@@ -51,6 +67,7 @@ public class EvilDumb extends Robot
 	 */
 	public void onHitWall(HitWallEvent e) {
 		// Replace the next line with any behavior you would like
-		back(20);
+		setBack(20);
+		setTurnRight(110);
 	}	
 }
