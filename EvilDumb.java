@@ -30,13 +30,13 @@ public class EvilDumb extends AdvancedRobot
             getRadarHeading();
 			getBattleFieldWidth();
             getBattleFieldHeight();
-			setAhead(80);
+			setAhead(40);
 			setTurnGunRight(110);
 			execute();
-		    setAhead(60);
+		    setAhead(50);
 			setTurnGunRight(80);
 			execute();
-			setBack(100);
+			setBack(40);
 			setTurnGunRight(90);
 			execute();
 			setAhead(30);
@@ -44,7 +44,15 @@ public class EvilDumb extends AdvancedRobot
 			execute();
 		    setTurnRight(38);
 	        setAhead(40);
-			execute();	
+			execute();
+			setTurnLeft(70);
+			setAhead(50);
+			execute();
+			setTurnLeft(10000);
+		    setMaxVelocity(5);
+		    ahead(10000);
+		    execute();
+				
 		}
 	}
 
@@ -53,8 +61,10 @@ public class EvilDumb extends AdvancedRobot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
-		fire(1);
-		ahead(50);
+		setFire(1);
+		setBack(60);
+		setTurnLeft(41);
+		execute();
 	}
 
 	/**
@@ -62,10 +72,12 @@ public class EvilDumb extends AdvancedRobot
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		// Replace the next line with any behavior you would like
-		setBack(20);
-		setTurnGunLeft(180);
-		turnGunRight(180);
+		setTurnLeft(10000);
+		setMaxVelocity(5);
+		ahead(100);
 		execute();
+		
+		
 	}
 	
 	/**
@@ -73,9 +85,17 @@ public class EvilDumb extends AdvancedRobot
 	 */
 	public void onHitWall(HitWallEvent e) {
 		// Replace the next line with any behavior you would like
-		setBack(20);
+		setBack(40);
 		setTurnRight(110);
 		execute();
-		ahead(50);
+		ahead(80);
 	}	
+	public void onHitRobot(HitRobotEvent e) {
+		if (e.getBearing() > -10 && e.getBearing() < 10) {
+			fire(3);
+		}
+		if (e.isMyFault()) {
+			turnRight(10);
+		}
+	}
 }
