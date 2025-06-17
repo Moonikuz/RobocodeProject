@@ -30,30 +30,16 @@ public class EvilDumb extends AdvancedRobot
             getRadarHeading();
 			getBattleFieldWidth();
             getBattleFieldHeight();
-			setAhead(40);
-			setTurnGunRight(110);
-			execute();
-		    setAhead(50);
-			setTurnGunRight(80);
-			execute();
-			setBack(40);
-			setTurnGunRight(90);
-			execute();
-			setAhead(30);
-			setTurnLeft(41);
-			execute();
-		    setTurnRight(38);
-	        setAhead(40);
-			execute();
-			setTurnLeft(70);
-			setAhead(50);
-			execute();
-			setTurnLeft(10000);
+			setTurnRight(10000);
 		    setMaxVelocity(5);
-		    ahead(10000);
+		    ahead(200);
 		    execute();
-			setTurnRight(80);
-			setBack(30);
+			setTurnGunRight(80);
+			setBack(40);
+			execute();
+			setTurnGunRight(10000);
+		    setMaxVelocity(5);
+		    ahead(200);
 			execute();
 				
 		}
@@ -64,13 +50,12 @@ public class EvilDumb extends AdvancedRobot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
-		setFire(1);
-		setBack(60);
-		setTurnLeft(41);
+		fireBullet(1);
+        setBack(90);
+		setTurnLeft(89);
 		execute();
-		setFire(2);
-		setTurnRight(39);
-		setAhead(41);
+		setTurnRight(70);
+		setAhead(70);
 		execute();
 	}
 
@@ -79,7 +64,10 @@ public class EvilDumb extends AdvancedRobot
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		// Replace the next line with any behavior you would like
-		setTurnLeft(10000);
+		setTurnRight(80);
+		setBack(30);
+		execute();
+        setTurnGunLeft(10000);
 		setMaxVelocity(5);
 		ahead(100);
 		execute();
@@ -93,16 +81,14 @@ public class EvilDumb extends AdvancedRobot
 	public void onHitWall(HitWallEvent e) {
 		// Replace the next line with any behavior you would like
 		setBack(40);
-		setTurnRight(110);
+		setTurnRight(90);
 		execute();
 		ahead(80);
 	}	
 	public void onHitRobot(HitRobotEvent e) {
-		if (e.getBearing() > -10 && e.getBearing() < 10) {
-			fire(3);
-		}
-		if (e.isMyFault()) {
-			turnRight(10);
-		}
+        fire(3);
+		setBack(60);
+		setTurnRight(60);
+		execute();
 	}
 }
